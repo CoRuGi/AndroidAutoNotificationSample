@@ -28,6 +28,14 @@
                 <action android:name="com.androidnanodegree.cr.androidautonotificationsample.MY_ACTION_MESSAGE_HEARD"/>
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".MyMessageReplyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.androidnanodegree.cr.androidautonotificationsample.MY_ACTION_MESSAGE_REPLY"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
