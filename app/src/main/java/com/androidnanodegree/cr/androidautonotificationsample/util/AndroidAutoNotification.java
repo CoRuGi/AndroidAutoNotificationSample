@@ -39,7 +39,7 @@ public class AndroidAutoNotification {
          * notification service can fire it on our behalf.
          */
         Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://developer.android.com/reference/android/app/Notification.html"));
+                Uri.parse(mContext.getString(R.string.notification_url)));
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
 
         /**
@@ -84,9 +84,9 @@ public class AndroidAutoNotification {
          *    versions of Android prior to 4.2 will ignore this field, so don't use it for
          *    anything vital!
          */
-        builder.setContentTitle("Standard Notification Sample");
-        builder.setContentText("Time to learn about notifications!");
-        builder.setSubText("Tap to view documentation about notifications.");
+        builder.setContentTitle(mContext.getString(R.string.android_auto_notification_title));
+        builder.setContentText(mContext.getString(R.string.android_auto_notification_text));
+        builder.setSubText(mContext.getString(R.string.android_auto_notification_subtext));
 
         /**
          * Send the notification. This will immediately display the notification icon in the

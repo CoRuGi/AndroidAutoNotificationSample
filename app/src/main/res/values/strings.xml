@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Android Auto Notification Sample</string>
+    <string name="notification_url">
+        http://developer.android.com/reference/android/app/Notification.html
+    </string>
 
     <!-- Android Auto Notification -->
     <string name="text_view_android_auto_notification">
@@ -7,9 +10,17 @@
         Android Auto display. The notifications can then be read to the user and the user is able to
         reply by voice.
 
-        This example launches a notification to the Android Auto display as if there has been send a
+        \n\nThis example launches a notification to the Android Auto display as if there has been send a
         text message. Android Auto is able to read the notification to the user and the user can
         reply by voice.
+
+        \n\nTo be able to simulate an Android Auto device, please make sure you have the Android
+        Auto API Simulators installed.
     </string>
     <string name="button_android_auto_notification">Launch Android Auto Notification</string>
+    <string name="android_auto_notification_title">Android Auto Notification Sample</string>
+    <string name="android_auto_notification_text">This is the Android Auto Notification</string>
+    <string name="android_auto_notification_subtext">
+        Tap to view documentation about notifications.
+    </string>
 </resources>
