@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Android Auto Notification Sample</string>
+
+    <!-- Android Auto Notification -->
+    <string name="text_view_android_auto_notification">
+        When the phone is connected to an Android Auto device the notifications can be viewed on the
+        Android Auto display. The notifications can then be read to the user and the user is able to
+        reply by voice.
+
+        This example launches a notification to the Android Auto display as if there has been send a
+        text message. Android Auto is able to read the notification to the user and the user can
+        reply by voice.
+    </string>
+    <string name="button_android_auto_notification">Launch Android Auto Notification</string>
 </resources>
