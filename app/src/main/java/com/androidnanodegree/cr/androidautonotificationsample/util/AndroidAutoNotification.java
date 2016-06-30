@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.RemoteInput;
 
 import com.androidnanodegree.cr.androidautonotificationsample.R;
 
@@ -22,6 +23,12 @@ public class AndroidAutoNotification {
      * unique system-wide.
      */
     public static final int NOTIFICATION_ID = 1;
+
+    /**
+     * A key to be used to extract out the reply from the speech recognition in our
+     * BroadcastReceiver.
+     */
+    public static final String VOICE_REPLY_KEY = "voice_reply_key";
 
     /**
      * A member variable to store the context given by the constructor of this class
@@ -89,6 +96,14 @@ public class AndroidAutoNotification {
                         messageReplyIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
+
+        /**
+         * Here we add the RemoteInput Object which will handle the speech recognition and deliver
+         * it to our BroadcastReceiver as a string.
+         */
+        RemoteInput remoteInput = new RemoteInput.Builder(VOICE_REPLY_KEY)
+                .setLabel(mContext.getString(R.string.speak_message))
+                .build();
 
         /**
          * Use NotificationCompat.Builder to set up our notification.

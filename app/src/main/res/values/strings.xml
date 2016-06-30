@@ -3,6 +3,7 @@
     <string name="notification_url">
         http://developer.android.com/reference/android/app/Notification.html
     </string>
+    <string name="speak_message">Prompt text</string>
 
     <!-- Android Auto Notification -->
     <string name="text_view_android_auto_notification">
