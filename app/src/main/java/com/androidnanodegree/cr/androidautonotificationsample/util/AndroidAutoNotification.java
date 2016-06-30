@@ -28,11 +28,11 @@ public class AndroidAutoNotification {
      */
     private Context mContext;
 
-    public AndroidAutoNotification(Context context){
+    public AndroidAutoNotification(Context context) {
         mContext = context;
     }
 
-    public void show(){
+    public void show() {
         /**
          * Create an intent that will be fired when the user clicks the notification.
          * The intent needs to be packaged into a {@link android.app.PendingIntent} so that the
@@ -70,6 +70,23 @@ public class AndroidAutoNotification {
                         mContext,
                         conversationId,
                         messageHeardIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        /**
+         * Here we create a messageReplyIntent. The code is similar to the messageHeardIntent,
+         * except for the action to trigger the BroadcastReceiver.
+         */
+        Intent messageReplyIntent = new Intent()
+                .addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+                .setAction("com.androidnanodegree.cr.androidautonotificationsample.MY_ACTION_MESSAGE_REPLY")
+                .putExtra("conversation_id", conversationId);
+
+        PendingIntent messageReplyPendingIntent =
+                PendingIntent.getBroadcast(
+                        mContext,
+                        conversationId,
+                        messageReplyIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
 
