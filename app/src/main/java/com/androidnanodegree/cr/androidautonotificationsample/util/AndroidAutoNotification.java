@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.support.annotation.StringDef;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
@@ -109,6 +110,19 @@ public class AndroidAutoNotification {
         RemoteInput remoteInput = new RemoteInput.Builder(VOICE_REPLY_KEY)
                 .setLabel(mContext.getString(R.string.speak_message))
                 .build();
+
+        /**
+         * Now we create a dummy message that is from a particular sender. Here the name is
+         * hardcoded, but normally you get it from the messages in your application.
+         */
+        String conversationName = "Coen Rundberg";
+        NotificationCompat.CarExtender.UnreadConversation.Builder unreadConversationBuilder =
+                new NotificationCompat.CarExtender.UnreadConversation.Builder(conversationName)
+                        .setReadPendingIntent(messageHeardPendingIntent)
+                        .setReplyAction(messageReplyPendingIntent, remoteInput);
+
+        unreadConversationBuilder.addMessage("Hello there, how are you?")
+                .setLatestTimestamp(System.currentTimeMillis());
 
         /**
          * Use NotificationCompat.Builder to set up our notification.
