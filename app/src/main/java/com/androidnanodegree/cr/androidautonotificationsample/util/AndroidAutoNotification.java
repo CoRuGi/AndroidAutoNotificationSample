@@ -43,6 +43,37 @@ public class AndroidAutoNotification {
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
 
         /**
+         * Here we specify a conversation ID. Normally this will be some kind of index from a data
+         * structure
+         */
+        int conversationId = 13;
+
+        /**
+         * Create an MessageHeardIntent to be able to tell the MessageHeardReceiver that the message
+         * has been heard by the user.
+         * We add a flag to trigger the packages that have stopped. Our messages app might not be
+         * running by the time it is heard by the driver.
+         * We use setAction to trigger the BroadcastReceiver.
+         */
+        Intent messageHeardIntent = new Intent()
+                .addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+                .setAction("com.androidnanodegree.cr.androidautonotificationsample.MY_ACTION_MESSAGE_HEARD")
+                .putExtra("conversation_id", conversationId);
+
+        /**
+         * Here we create the PendingIntent as a wrapper for the MessageHeardIntent. We use the
+         * conversationID, we pass the Intent and we set a flag to allow our notification to be
+         * updated.
+         */
+        PendingIntent messageHeardPendingIntent =
+                PendingIntent.getBroadcast(
+                        mContext,
+                        conversationId,
+                        messageHeardIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        /**
          * Use NotificationCompat.Builder to set up our notification.
          */
         NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext);
