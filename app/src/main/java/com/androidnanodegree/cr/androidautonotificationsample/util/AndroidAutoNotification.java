@@ -31,6 +31,11 @@ public class AndroidAutoNotification {
     public static final String VOICE_REPLY_KEY = "voice_reply_key";
 
     /**
+     * A string to hold the conversationId in an Intent
+     */
+    public static final String CONVERSATION_ID = "conversation_id";
+
+    /**
      * A member variable to store the context given by the constructor of this class
      */
     private Context mContext;
@@ -65,7 +70,7 @@ public class AndroidAutoNotification {
         Intent messageHeardIntent = new Intent()
                 .addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
                 .setAction("com.androidnanodegree.cr.androidautonotificationsample.MY_ACTION_MESSAGE_HEARD")
-                .putExtra("conversation_id", conversationId);
+                .putExtra(CONVERSATION_ID, conversationId);
 
         /**
          * Here we create the PendingIntent as a wrapper for the MessageHeardIntent. We use the
@@ -87,7 +92,7 @@ public class AndroidAutoNotification {
         Intent messageReplyIntent = new Intent()
                 .addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
                 .setAction("com.androidnanodegree.cr.androidautonotificationsample.MY_ACTION_MESSAGE_REPLY")
-                .putExtra("conversation_id", conversationId);
+                .putExtra(CONVERSATION_ID, conversationId);
 
         PendingIntent messageReplyPendingIntent =
                 PendingIntent.getBroadcast(
