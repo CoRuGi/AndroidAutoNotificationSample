@@ -13,7 +13,7 @@ import android.support.v4.app.RemoteInput;
 import com.androidnanodegree.cr.androidautonotificationsample.R;
 
 /**
- * Most of the code is from the Basic Notification Sample provided by the samples of SDK 23
+ * Some of the code is from the Basic Notification Sample provided by the samples of SDK 23.
  * Original code can be found at: https://github.com/googlesamples/android-BasicNotifications
  */
 
@@ -128,6 +128,15 @@ public class AndroidAutoNotification {
          * Use NotificationCompat.Builder to set up our notification.
          */
         NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext);
+
+        /**
+         * Here we add our Android Auto notifications to the NotificationCompat.Builder so our
+         * notifications will be seen on the Android Auto display
+         */
+        builder.extend(
+                new NotificationCompat.CarExtender()
+                        .setUnreadConversation(unreadConversationBuilder.build())
+        );
 
         /**
          * Set the icon that will appear in the notification bar. This icon also appears
